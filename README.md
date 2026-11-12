@@ -5,7 +5,7 @@ AgentDesk is an invented product: an AI assistant team for small businesses (sup
 **This is a front-end demo. There is no backend, no real AI and no real integrations.** All activity, prices and numbers are sample data.
 
 ## Live demo
-<add your Netlify / Vercel / GitHub Pages link here>
+https://agentdesk-madhulika.netlify.app
 
 ## Run it with VS Code Live Server
 1. Install [VS Code](https://code.visualstudio.com/) and the **Live Server** extension (by Ritwick Dey).
@@ -38,7 +38,10 @@ HTML5, CSS3 (custom properties, Grid, Flexbox, media queries), vanilla JavaScrip
 - `script.js` one function per feature
 
 ## Design notes
-<paste your 5–8 line explanation here>
+I designed AgentDesk as a calm, trustworthy SaaS product for small businesses, using an indigo and mint palette on a soft off-white background. All colours are CSS variables, so the light and dark themes share one stylesheet and the chosen theme is saved in localStorage. The hero shows a dashboard preview, clearly labelled as sample data, to explain the product at a glance. Agent details open in the native HTML dialog element, which gives keyboard support and Esc-to-close without extra code. The "How it works" timeline switches from horizontal to vertical on mobile, which took the most layout work. Because there is no backend, the demo form validates in the browser and says plainly that nothing is sent. I built it with plain HTML, CSS and JavaScript so every part is easy to explain.
 
 ## Screenshots
-<add desktop and mobile screenshots to a /screenshots folder>
+## Screenshots
+![Desktop light](desktop-light.png)
+![Desktop dark](desktop-dark.png)
+![Mobile](mobile.png)
