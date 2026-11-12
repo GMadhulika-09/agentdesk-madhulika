@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgentDesk – Your AI team. Always on.</title>
+<meta name="description" content="AgentDesk is a front-end demo of an AI assistant team for support, scheduling and email.">
+<script>
+  // Apply the saved theme before the page paints, to avoid a flash of the wrong theme.
+  try {
+    var t = localStorage.getItem('agentdesk-theme') ||
+      (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Icon sprite: every icon on the page is drawn from here with <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 20v-7M12 20V6M17 20v-10"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h8M18 7h2M4 17h2M12 17h8"/><circle cx="15" cy="7" r="2.5"/><circle cx="9" cy="17" r="2.5"/></symbol>
+  <symbol id="i-dash" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 11l2 2 4-4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span>AgentDesk</a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="#agents">Agents</a>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">
+        <svg class="i icon-moon"><use href="#i-moon"/></svg>
+        <svg class="i icon-sun"><use href="#i-sun"/></svg>
+      </button>
+      <a class="btn btn-sm nav-cta" href="#contact">Get started</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="links" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero wrap">
+  <div class="hero-text">
+    <h1>Your AI team. Always on.</h1>
+    <p class="lead">Meet intelligent assistants that handle customer support, scheduling and email workflows while you focus on growing your business.</p>
+    <div class="cta-row">
+      <a class="btn" href="#agents">Explore AI Agents</a>
+      <a class="btn btn-ghost" href="#how">See How It Works</a>
+    </div>
+    <p class="note">Free 14-day trial in the finished product. This page is a front-end demo.</p>
+  </div>
+
+  <div class="dash" role="group" aria-label="Product preview of the AgentDesk dashboard, showing sample data">
+    <div class="dash-top">
+      <span class="dash-title">Sunrise Bakery workspace</span>
+      <span class="chip">Product preview · sample data</span>
+    </div>
+    <div class="dash-stats">
+      <div class="stat">
+        <span class="big" id="taskCount">128</span>
+        <span class="muted">tasks completed today</span>
+      </div>
+      <div class="chart" role="img" aria-label="Sample bar chart of tasks completed each day this week">
+        <i style="--h:45%"></i><i style="--h:60%"></i><i style="--h:52%"></i><i style="--h:78%"></i><i style="--h:66%"></i><i style="--h:40%"></i><i class="today" style="--h:92%"></i>
+      </div>
+    </div>
+    <ul class="live-agents">
+      <li><span class="tile c1"><svg class="i"><use href="#i-chat"/></svg></span><span class="grow"><b>Support Agent</b><small>Replying to 3 chats</small></span><span class="status"><span class="dot"></span>Active</span></li>
+      <li><span class="tile c2"><svg class="i"><use href="#i-cal"/></svg></span><span class="grow"><b>Scheduling Agent</b><small>12 bookings today</small></span><span class="status"><span class="dot"></span>Active</span></li>
+      <li><span class="tile c3"><svg class="i"><use href="#i-mail"/></svg></span><span class="grow"><b>Email Agent</b><small>5 drafts to approve</small></span><span class="status"><span class="dot"></span>Active</span></li>
+    </ul>
+    <h2 class="feed-title">Recent activity <span class="muted">(simulated)</span></h2>
+    <ul class="feed" id="feed" aria-live="off"></ul>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section class="section wrap" id="agents">
+  <div class="head">
+    <h2>Meet your agents</h2>
+    <p class="sub">Each agent has one job. Pick the ones you need and switch them off any time.</p>
+  </div>
+  <div class="agent-grid">
+    <article class="agent" data-sample="“Do you have gluten-free options on Sundays?” The agent checks your menu notes and replies in your tone.">
+      <div class="agent-head"><span class="tile c1"><svg class="i"><use href="#i-chat"/></svg></span><h3>Support Agent</h3><span class="status"><span class="dot"></span>Available</span></div>
+      <p class="agent-desc">Answers customer questions on your website using your own FAQs and policies.</p>
+      <ul class="caps"><li>Replies in seconds, day or night</li><li>Learns from your FAQs</li><li>Hands tricky chats to you</li></ul>
+      <button class="btn btn-ghost btn-sm" type="button" data-open>Explore agent</button>
+    </article>
+    <article class="agent" data-sample="A customer asks for Friday afternoon. The agent offers three free slots and confirms the one they pick.">
+      <div class="agent-head"><span class="tile c2"><svg class="i"><use href="#i-cal"/></svg></span><h3>Scheduling Agent</h3><span class="status"><span class="dot"></span>Available</span></div>
+      <p class="agent-desc">Finds a free time, books the appointment and sends a reminder.</p>
+      <ul class="caps"><li>Checks your availability</li><li>Handles reschedules</li><li>Sends reminders</li></ul>
+      <button class="btn btn-ghost btn-sm" type="button" data-open>Explore agent</button>
+    </article>
+    <article class="agent" data-sample="A catering enquiry arrives. The agent drafts a reply with your price list and waits for your approval.">
+      <div class="agent-head"><span class="tile c3"><svg class="i"><use href="#i-mail"/></svg></span><h3>Email Agent</h3><span class="status"><span class="dot"></span>Available</span></div>
+      <p class="agent-desc">Drafts replies to routine emails in your voice, ready for you to approve.</p>
+      <ul class="caps"><li>Sorts your inbox by urgency</li><li>Drafts in your tone</li><li>Sends only after approval</li></ul>
+      <button class="btn btn-ghost btn-sm" type="button" data-open>Explore agent</button>
+    </article>
+    <article class="agent" data-sample="Monday morning: a one-page summary shows 42 conversations, 3 that needed you, and the most asked question.">
+      <div class="agent-head"><span class="tile c4"><svg class="i"><use href="#i-chart"/></svg></span><h3>Business Insights Agent</h3><span class="status"><span class="dot"></span>Available</span></div>
+      <p class="agent-desc">Turns the week's conversations into a short, plain-language report.</p>
+      <ul class="caps"><li>Weekly summary</li><li>Most common questions</li><li>Busy-hour trends</li></ul>
+      <button class="btn btn-ghost btn-sm" type="button" data-open>Explore agent</button>
+    </article>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section tint" id="how">
+  <div class="wrap">
+    <div class="head">
+      <h2>How it works</h2>
+      <p class="sub">Three steps from sign-up to your first handled customer.</p>
+    </div>
+    <ol class="steps" id="steps">
+      <li><span class="step-icon"><svg class="i"><use href="#i-plug"/></svg></span><h3>Connect your tools</h3><p>Link your inbox, calendar and website chat. It takes a few clicks.</p></li>
+      <li><span class="step-icon"><svg class="i"><use href="#i-sliders"/></svg></span><h3>Configure your AI agents</h3><p>Choose your agents, add your prices and opening hours, and set what needs your approval.</p></li>
+      <li><span class="step-icon"><svg class="i"><use href="#i-dash"/></svg></span><h3>Monitor everything in one place</h3><p>See every conversation, booking and draft on a single dashboard.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section wrap" id="features">
+  <div class="head">
+    <h2>Built to stay in your control</h2>
+    <p class="sub">Automation is useful when you can trust it.</p>
+  </div>
+  <div class="features">
+    <div><svg class="i"><use href="#i-dash"/></svg><h3>Unified AI workspace</h3><p>Chats, bookings and emails live in one inbox instead of three apps.</p></div>
+    <div><svg class="i"><use href="#i-user"/></svg><h3>Human approval controls</h3><p>Decide which replies go out automatically and which wait for you.</p></div>
+    <div><svg class="i"><use href="#i-bolt"/></svg><h3>Smart task automation</h3><p>Repeat tasks, like confirmations and reminders, run on their own.</p></div>
+    <div><svg class="i"><use href="#i-chart"/></svg><h3>Activity analytics</h3><p>See what was handled, how fast, and what customers ask most.</p></div>
+    <div><svg class="i"><use href="#i-shield"/></svg><h3>Privacy and access controls</h3><p>Choose who on your team can see conversations and change settings.</p></div>
+    <div><svg class="i"><use href="#i-clock"/></svg><h3>Easy setup</h3><p>No code. Most small businesses are ready in an afternoon.</p></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section tint" id="pricing">
+  <div class="wrap">
+    <div class="head">
+      <h2>Simple pricing</h2>
+      <p class="sub">Sample plans for this demo. Start free and upgrade as you grow.</p>
+    </div>
+    <div class="toggle" role="group" aria-label="Billing period">
+      <button type="button" class="on" data-bill="monthly" aria-pressed="true">Monthly</button>
+      <button type="button" data-bill="yearly" aria-pressed="false">Yearly <small>save 20%</small></button>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <h3>Starter</h3>
+        <p class="price"><span class="amt" data-m="$0" data-y="$0">$0</span><span class="per">/month</span></p>
+        <p class="bill" data-m="Free, no card needed" data-y="Free, no card needed">Free, no card needed</p>
+        <ul><li>1 agent of your choice</li><li>100 conversations a month</li><li>Email support</li></ul>
+        <a class="btn btn-ghost" href="#contact">Start free</a>
+      </article>
+      <article class="plan featured">
+        <span class="badge">Most popular</span>
+        <h3>Growth</h3>
+        <p class="price"><span class="amt" data-m="$29" data-y="$23">$29</span><span class="per">/month</span></p>
+        <p class="bill" data-m="Billed monthly" data-y="Billed $276 yearly. You save $72.">Billed monthly</p>
+        <ul><li>All 4 agents</li><li>2,000 conversations a month</li><li>Weekly insights report</li><li>Priority support</li></ul>
+        <a class="btn" href="#contact">Try Growth</a>
+      </article>
+      <article class="plan">
+        <h3>Business</h3>
+        <p class="price"><span class="amt" data-m="$79" data-y="$63">$79</span><span class="per">/month</span></p>
+        <p class="bill" data-m="Billed monthly" data-y="Billed $756 yearly. You save $192.">Billed monthly</p>
+        <ul><li>Unlimited conversations</li><li>Up to 5 team members</li><li>Custom agent tone</li></ul>
+        <a class="btn btn-ghost" href="#contact">Request a demo</a>
+      </article>
+    </div>
+    <p class="fine" id="billNote">Prices are per month, billed monthly.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section wrap narrow" id="faq">
+  <div class="head"><h2>Questions people ask</h2></div>
+  <details><summary>Will customers know they're talking to an AI?</summary><p>Yes. Agents introduce themselves as your assistant, and customers can ask for a person at any time.</p></details>
+  <details><summary>What if an agent doesn't know the answer?</summary><p>It says so and passes the conversation to you with a short summary, so you never start from scratch.</p></details>
+  <details><summary>Can I control what gets sent automatically?</summary><p>Yes. You choose which kinds of replies are sent on their own and which wait for your approval.</p></details>
+  <details><summary>Can I cancel whenever I want?</summary><p>Yes. Plans are month to month, with no cancellation fees.</p></details>
+</section>
+
+<!-- CONTACT -->
+<section class="section tint" id="contact">
+  <div class="wrap contact">
+    <div>
+      <h2>Request a demo</h2>
+      <p class="sub">Tell us what you'd like to hand off to an agent.</p>
+      <div class="demo-note">
+        <h3>This form is a front-end demo</h3>
+        <ul>
+          <li>Your answers are checked in the browser.</li>
+          <li>A confirmation appears on this page.</li>
+          <li>Nothing is sent, saved or booked.</li>
+        </ul>
+      </div>
+    </div>
+    <form id="demoForm" novalidate>
+      <label for="name">Full name</label>
+      <input id="name" name="name" autocomplete="name" required>
+      <p class="err" id="nameErr" role="alert"></p>
+
+      <label for="email">Work email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+      <p class="err" id="emailErr" role="alert"></p>
+
+      <label for="business">Business name</label>
+      <input id="business" name="business" autocomplete="organization" required>
+      <p class="err" id="businessErr" role="alert"></p>
+
+      <label for="agent">Agent of interest</label>
+      <select id="agent" name="agent" required>
+        <option value="">Choose an agent</option>
+        <option>Support Agent</option><option>Scheduling Agent</option><option>Email Agent</option><option>Business Insights Agent</option><option>Not sure yet</option>
+      </select>
+      <p class="err" id="agentErr" role="alert"></p>
+
+      <label for="msg">Message <span class="opt">(optional)</span></label>
+      <textarea id="msg" name="msg" rows="3"></textarea>
+
+      <button class="btn" type="submit">Request demo</button>
+      <p class="ok" id="success" role="status" tabindex="-1" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- Agent details modal (native <dialog>: Esc closes it and focus stays inside) -->
+<dialog id="agentModal" aria-labelledby="modalTitle">
+  <div class="modal-head">
+    <span class="tile" id="modalTile"><svg class="i"><use href="#i-chat"/></svg></span>
+    <h3 id="modalTitle"></h3>
+    <button class="icon-btn" type="button" id="modalClose" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>
+  </div>
+  <p id="modalDesc"></p>
+  <ul class="caps" id="modalCaps"></ul>
+  <div class="sample"><b>Example</b><p id="modalSample"></p></div>
+  <p class="fine">Demo only: this adds the agent to the request form below. No account is created.</p>
+  <div class="modal-actions">
+    <button class="btn" type="button" id="modalConfirm">Request this agent</button>
+    <button class="btn btn-ghost" type="button" id="modalCancel">Not now</button>
+  </div>
+</dialog>
+
+<footer class="footer">
+  <div class="wrap foot-in">
+    <div><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span>AgentDesk</a><p class="tag">Your AI team. Always on.</p></div>
+    <nav aria-label="Footer"><a href="#agents">Agents</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+    <p class="legal">A student front-end project. All content, prices and activity shown are sample data.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top" hidden><svg class="i"><use href="#i-up"/></svg></button>
+
+<script src="script.js"></script>
+</body>
+</html>
